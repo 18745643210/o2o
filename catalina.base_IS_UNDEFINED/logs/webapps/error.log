@@ -1,0 +1,5 @@
+2019-01-09 10:11:59:917[main]ERRORcom.linda.o2o.util.ImageUtil-javax.imageio.IIOException: Can't read input file!
+2019-01-09 10:19:10:211[main]ERRORcom.linda.o2o.util.ImageUtil-javax.imageio.IIOException: Can't read input file!
+2019-01-09 10:23:32:889[main]ERRORcom.linda.o2o.util.ImageUtil-javax.imageio.IIOException: Can't read input file!
+2019-01-09 10:29:12:457[main]ERRORcom.linda.o2o.util.ImageUtil-javax.imageio.IIOException: Can't read input file!
+2019-01-09 10:29:59:479[main]ERRORcom.linda.o2o.util.ImageUtil-javax.imageio.IIOException: Can't read input file!
