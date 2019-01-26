@@ -11,4 +11,5 @@ public interface ProductCategoryService {
      * @return
      */
     List<ProductCategory> getProductCategoryList(long shopId);
+
 }
