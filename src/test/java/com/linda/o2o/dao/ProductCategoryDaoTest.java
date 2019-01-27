@@ -16,17 +16,19 @@ import static org.junit.Assert.assertEquals;
 public class ProductCategoryDaoTest extends BaseTest {
     @Autowired
     ProductCategoryDao productCategoryDao;
+
     @Ignore
     @Test
-    public void testQueryByShopId() throws Exception{
-        long shopId=1;
+    public void testQueryByShopId() throws Exception {
+        long shopId = 1;
         List<ProductCategory> productCategoryList = productCategoryDao.queryProductCategoryList(shopId);
-        System.out.println("该店铺自定义类别数为:"+productCategoryList.size());
+        System.out.println("该店铺自定义类别数为:" + productCategoryList.size());
 
     }
 
+    @Ignore
     @Test
-    public void testBatchInsertProductCategory(){
+    public void testBatchInsertProductCategory() {
         ProductCategory productCategory = new ProductCategory();
         productCategory.setProductCategoryName("商品类别1");
         productCategory.setPriority(1);
@@ -37,10 +39,17 @@ public class ProductCategoryDaoTest extends BaseTest {
         productCategory2.setPriority(2);
         productCategory2.setCreateTime(new Date());
         productCategory2.setShopId(1L);
-        List<ProductCategory>productCategoryList = new ArrayList<ProductCategory>();
+        List<ProductCategory> productCategoryList = new ArrayList<ProductCategory>();
         productCategoryList.add(productCategory);
         productCategoryList.add(productCategory2);
-        int effectNum =productCategoryDao.batchInsertProductCategory(productCategoryList);
-        assertEquals(2,effectNum);
+        int effectNum = productCategoryDao.batchInsertProductCategory(productCategoryList);
+        assertEquals(2, effectNum);
+    }
+    @Ignore
+    @Test
+    public void testDeleteProductCategory() {
+        int effectNum = productCategoryDao.deleteProductCategory(1L, 8L);
+
+        assertEquals(1, effectNum);
     }
 }
