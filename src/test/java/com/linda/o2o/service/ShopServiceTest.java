@@ -2,6 +2,7 @@ package com.linda.o2o.service;
 
 import com.linda.o2o.BaseTest;
 import com.linda.o2o.dao.ShopDao;
+import com.linda.o2o.dto.ImageHolder;
 import com.linda.o2o.dto.ShopExecution;
 import com.linda.o2o.entity.Area;
 import com.linda.o2o.entity.PersonInfo;
@@ -13,6 +14,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.awt.*;
 import java.io.*;
 import java.util.Date;
 import java.util.List;
@@ -30,7 +32,8 @@ public class ShopServiceTest extends BaseTest {
         shop.setShopName("新修改的店铺名称2");
         File shopImg = new File("D:/timg.jpg");
         InputStream is = new FileInputStream(shopImg);
-        ShopExecution shopExecution=shopService.modifyShop(shop,is,"timg.jpg");
+        ImageHolder imageHolder = new ImageHolder("timg.jpg",is);
+        ShopExecution shopExecution=shopService.modifyShop(shop,imageHolder);
         System.out.println("新的图片地址"+shopExecution.getShop().getShopImg());
     }
     @Ignore
@@ -58,7 +61,8 @@ public class ShopServiceTest extends BaseTest {
         File shopImg = new File("D:/timg.jpg");
         InputStream is = new FileInputStream(shopImg);
         System.out.println(shopImg.getName());
-        ShopExecution se = shopService.addShop(shop, is,shopImg.getName());
+        ImageHolder imageHolder = new ImageHolder("timg.jpg",is);
+        ShopExecution se = shopService.addShop(shop,imageHolder);
         assertEquals(ShopStateEnum.CHECK.getState(),se.getState());
     }
     @Ignore
