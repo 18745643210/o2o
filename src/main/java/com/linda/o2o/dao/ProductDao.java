@@ -11,4 +11,10 @@ public interface ProductDao {
      * @return
      */
     int insertProduct(Product product);
+
+
+    /**
+     * 根据productId获取商品
+     */
+    Product queryProductByProductId(Long productId);
 }

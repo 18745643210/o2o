@@ -4,6 +4,7 @@ import com.linda.o2o.BaseTest;
 import com.linda.o2o.entity.Product;
 import com.linda.o2o.entity.ProductCategory;
 import com.linda.o2o.entity.Shop;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 public class ProductDaoTest extends BaseTest {
     @Autowired
     ProductDao productDao;
-
+    @Ignore
     @Test
     public void testInsertProduct(){
         System.out.println(productDao);
@@ -36,5 +37,12 @@ public class ProductDaoTest extends BaseTest {
         p.setShop(s);
         int effectNum = productDao.insertProduct(p);
         assertEquals(1,effectNum);
+    }
+
+
+    @Test
+    public void testQueryById(){
+        Product p = productDao.queryProductByProductId(1L);
+        System.out.println(p.getProductName());
     }
 }

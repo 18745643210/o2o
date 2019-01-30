@@ -57,6 +57,11 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
+    @Override
+    public Product getProductById(long productId) {
+        return productDao.queryProductByProductId(productId);
+    }
+
     /**
      * 添加缩略图
      *

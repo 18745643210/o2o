@@ -3,6 +3,50 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.linda.o2o.dao.ProductDao">
+    <resultMap id="productMap" type="com.linda.o2o.entity.Product">
+        <id column="product_id" property="productId"/>
+        <result column="product_name" property="productName"/>
+        <result column="product_desc" property="productDesc"/>
+        <result column="img_addr" property="imgAddr"/>
+        <result column="normal_price" property="normalPrice"/>
+        <result column="promotion_price" property="promotionPrice"/>
+        <result column="priority" property="priority"/>
+        <result column="create_time" property="createTime"/>
+        <result column="last_edit_time" property="lastEditTime"/>
+        <result column="enable_status" property="enableStatus"/>
+        <association property="productCategory" column="product_category_id"
+                     javaType="com.linda.o2o.entity.ProductCategory">
+            <id column="product_category_id" property="productCategoryId"/>
+            <result column="product_category_name" property="productCategoryName"/>
+            <result column="product_category_desc" property="productCategoryDesc"/>
+            <result column="priority" property="priority"/>
+            <result column="create_time" property="createTime"/>
+        </association>
+        <association property="shop" column="shop_id"
+                     javaType="com.linda.o2o.entity.Shop">
+            <id column="shop_id" property="shopId"/>
+            <result column="owner_id" property="ownerId"/>
+            <result column="shop_name" property="shopName"/>
+            <result column="shop_desc" property="shopDesc"/>
+            <result column="shop_addr" property="shopAddr"/>
+            <result column="phone" property="phone"/>
+            <result column="shop_img" property="shopImg"/>
+            <result column="priority" property="priority"/>
+            <result column="create_time" property="createTime"/>
+            <result column="last_edit_time" property="lastEditTime"/>
+            <result column="enable_status" property="enableStatus"/>
+            <result column="advice" property="advice"/>
+        </association>
+        <collection property="productImgList" column="product_id"
+                    ofType="com.linda.o2o.entity.ProductImg">
+            <id column="product_img_id" property="productImgId"/>
+            <result column="img_addr" property="imgAddr"/>
+            <result column="img_desc" property="imgDesc"/>
+            <result column="priority" property="priority"/>
+            <result column="create_time" property="createTime"/>
+            <result column="product_id" property="productId"/>
+        </collection>
+    </resultMap>
     <insert id="insertProduct" parameterType="com.linda.o2o.entity.Product"
             useGeneratedKeys="true" keyProperty="productId" keyColumn="product_id">
         insert into tb_product(product_name,product_desc,img_addr,
@@ -15,5 +59,39 @@
         #{shop.shopId})
 
     </insert>
+
+
+    <select id="queryProductByProductId" parameterType="Long" resultMap="productMap">
+      select
+      p.product_id,
+		p.product_name,
+		p.product_desc,
+		p.img_addr,
+		p.normal_price,
+		p.promotion_price,
+		p.priority,
+		p.create_time,
+		p.last_edit_time,
+		p.enable_status,
+		p.product_category_id,
+		p.shop_id,
+		pm.product_img_id,
+		pm.img_addr,
+		pm.img_desc,
+		pm.priority,
+		pm.create_time
+		FROM
+		tb_product p
+		LEFT JOIN
+		tb_product_img pm
+		ON
+		p.product_id =
+		pm.product_id
+		WHERE
+		p.product_id =
+		#{productId}
+		ORDER BY
+		pm.priority DESC
+    </select>
 
 </mapper>
