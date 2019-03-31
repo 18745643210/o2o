@@ -44,7 +44,7 @@ public class ShopServiceTest extends BaseTest {
         ShopCategory sc = new ShopCategory();
         Area area = new Area();
         owner.setUserId(1L);
-        area.setAreaId(2);
+        area.setAreaId(2L);
         sc.setShopCategoryId(1L);
         shop.setOwner(owner);
         shop.setArea(area);
@@ -74,7 +74,7 @@ public class ShopServiceTest extends BaseTest {
         ShopCategory sc = new ShopCategory();
         sc.setShopCategoryId(2L);
         Area area =new Area();
-        area.setAreaId(2);
+        area.setAreaId(2L);
         shopcondition.setArea(area);
         shopcondition.setShopCategory(sc);
 

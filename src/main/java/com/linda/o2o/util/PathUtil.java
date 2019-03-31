@@ -8,6 +8,8 @@ public class PathUtil {
         String basePath="";
         if(os.toLowerCase().startsWith("win")){
             basePath = "D:/projectdev/image";
+        }else{
+            basePath = "/User/baidu/work/image";
         }
         basePath = basePath.replace("/",seperator);
         return  basePath;

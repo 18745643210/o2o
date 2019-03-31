@@ -24,6 +24,7 @@ import java.util.List;
 public class ShopServiceImpl implements ShopService {
     @Override
     public ShopExecution getShopList(Shop shopCondition, int pageIndex, int pageSize) {
+        //根据查询条件将页码转换为行码
         int rowIndex = PageCalculator.calculateRowIndex(pageIndex, pageSize);
         List<Shop> shopList = shopDao.queryShopList(shopCondition, rowIndex, pageSize);
         int count = shopDao.queryShopCount(shopCondition);

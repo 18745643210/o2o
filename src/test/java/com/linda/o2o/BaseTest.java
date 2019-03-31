@@ -8,7 +8,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 @WebAppConfiguration("src/main/resources")
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:spring/applicationContext.xml","classpath:spring/dispatcher-servlet.xml"})
+@ContextConfiguration({"classpath:spring/spring-dao.xml", "classpath:spring/spring-web.xml"})
 
 public class BaseTest {
 

@@ -19,6 +19,24 @@ public interface ProductService {
      */
     ProductExecution addProduct(Product product, ImageHolder thumbnail, List<ImageHolder> productImgs) throws ProductOperationException;
 
-
+    /**
+     * 获取商品
+     * @param productId
+     * @return
+     */
     Product getProductById(long productId);
+
+    /**
+     * 更新商品
+     * @param product
+     * @param thumbnail
+     * @param productImgs
+     * @return
+     * @throws ProductOperationException
+     */
+    ProductExecution modifyProduct(Product product, ImageHolder thumbnail, List<ImageHolder> productImgs) throws  ProductOperationException;
+
+    ProductExecution getProductList(Product productCondition,int pageIndex, int pageSize);
+
+
 }

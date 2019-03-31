@@ -7,6 +7,7 @@ import com.linda.o2o.entity.Product;
 import com.linda.o2o.entity.ProductCategory;
 import com.linda.o2o.entity.Shop;
 import com.linda.o2o.enums.ProductStateEnum;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -23,6 +24,7 @@ import static org.junit.Assert.assertEquals;
 public class ProductServiceTest extends BaseTest {
     @Autowired
     private ProductService productService;
+    @Ignore
     @Test
     public void testAddProduct() throws FileNotFoundException {
         Product p = new Product();
@@ -38,14 +40,14 @@ public class ProductServiceTest extends BaseTest {
         p.setCreateTime(new Date());
         p.setEnableStatus(ProductStateEnum.SUCCESS.getState());
         //创建缩略图文件流
-        File thumbnailFile = new File("F:/test.jpg");
+        File thumbnailFile = new File("D:/timg.jpg");
         InputStream is = new FileInputStream(thumbnailFile);
         ImageHolder imageHolder = new ImageHolder(thumbnailFile.getName(),is);
 
         //创建两个商品详情图片
-        File thumbnailFile1 = new File("F:/test.jpg");
+        File thumbnailFile1 = new File("D:/timg.jpg");
         InputStream is1 = new FileInputStream(thumbnailFile1);
-        File thumbnailFile2 = new File("F:/test0.jpg");
+        File thumbnailFile2 = new File("D:/timg1.jpg");
         InputStream is2 = new FileInputStream(thumbnailFile2);
         ImageHolder imageHolder1 = new ImageHolder(thumbnailFile1.getName(),is1);
         ImageHolder imageHolder2 = new ImageHolder(thumbnailFile2.getName(),is2);
@@ -56,8 +58,42 @@ public class ProductServiceTest extends BaseTest {
 
         ProductExecution pe = productService.addProduct(p,imageHolder,imageHolderList);
         assertEquals(pe.getState(),ProductStateEnum.SUCCESS.getState());
-
-
-
     }
+    @Test
+    public void testModifyProduct()throws FileNotFoundException{
+        Product p = new Product();
+        Shop shop = new Shop();
+        shop.setShopId(1L);
+        ProductCategory pc = new ProductCategory();
+        pc.setProductCategoryId(1L);
+        p.setProductCategory(pc);
+        p.setShop(shop);
+        p.setProductId(3L);
+        p.setProductName("正式商品");
+        p.setProductDesc("正式");
+        p.setPriority(10);
+        p.setCreateTime(new Date());
+        p.setEnableStatus(ProductStateEnum.SUCCESS.getState());
+        //创建缩略图文件流
+        File thumbnailFile = new File("D:/timg.jpg");
+        InputStream is = new FileInputStream(thumbnailFile);
+        ImageHolder imageHolder = new ImageHolder(thumbnailFile.getName(),is);
+
+        //创建两个商品详情图片
+        File thumbnailFile1 = new File("D:/timg.jpg");
+        InputStream is1 = new FileInputStream(thumbnailFile1);
+        File thumbnailFile2 = new File("D:/timg1.jpg");
+        InputStream is2 = new FileInputStream(thumbnailFile2);
+        ImageHolder imageHolder1 = new ImageHolder(thumbnailFile1.getName(),is1);
+        ImageHolder imageHolder2 = new ImageHolder(thumbnailFile2.getName(),is2);
+        List<ImageHolder>imageHolderList = new ArrayList<ImageHolder>();
+        imageHolderList.add(imageHolder1);
+        imageHolderList.add(imageHolder2);
+
+
+        ProductExecution pe = productService.modifyProduct(p,imageHolder,imageHolderList);
+        assertEquals(pe.getState(),ProductStateEnum.SUCCESS.getState());
+    }
+
+
  }
