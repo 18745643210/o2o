@@ -17,23 +17,23 @@
 		<constructor-arg index="1" value="${redis.hostname}" />
 		<constructor-arg index="2" value="${redis.port}" type="int" />
 	</bean>
-	<bean id="jedisKeys" class="com.linda.o2o.cache.JedisUtil$KEYS"
+	<bean id="jedisKeys" class="com.linda.o2o.cache.JedisUtil$Keys"
 		scope="singleton">
 		<constructor-arg ref="jedisUtil"></constructor-arg>
 	</bean>
-	<bean id="jedisStrings" class="com.linda.o2o.cache.JedisUtil$STRINGS"
+	<bean id="jedisStrings" class="com.linda.o2o.cache.JedisUtil$Strings"
 		scope="singleton">
 		<constructor-arg ref="jedisUtil"></constructor-arg>
 	</bean>
-	<bean id="jedisLists" class="com.linda.o2o.cache.JedisUtil$LISTS"
+	<bean id="jedisLists" class="com.linda.o2o.cache.JedisUtil$Lists"
 		scope="singleton">
 		<constructor-arg ref="jedisUtil"></constructor-arg>
 	</bean>
-	<bean id="jedisSets" class="com.linda.o2o.cache.JedisUtil$SETS"
+	<bean id="jedisSets" class="com.linda.o2o.cache.JedisUtil$Sets"
 		scope="singleton">
 		<constructor-arg ref="jedisUtil"></constructor-arg>
 	</bean>
-	<bean id="jedisHash" class="com.linda.o2o.cache.JedisUtil$HASH"
+	<bean id="jedisHash" class="com.linda.o2o.cache.JedisUtil$Hash"
 		scope="singleton">
 		<constructor-arg ref="jedisUtil"></constructor-arg>
 	</bean>

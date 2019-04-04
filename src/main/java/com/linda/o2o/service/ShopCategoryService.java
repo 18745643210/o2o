@@ -5,6 +5,8 @@ import com.linda.o2o.entity.ShopCategory;
 import java.util.List;
 
 public interface ShopCategoryService {
+    public static final String SCLISTKEY = "shopcategorylist";
+
     /**
      * 根据查询条件获取shopCategoryList
      * @param shopCategoryCondition
